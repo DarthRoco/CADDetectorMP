@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/frontpage.css') }}">
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"></script>
+    <script src="semantic/dist/semantic.min.js"></script>
+    <title>CAD Detector</title>
+</head>
+<body>
+    <div>
+        <img  src="{{url_for('static', filename='NITK MECH.jpeg')}}" alt="NITK MECHANICAL" width="1380" height="200">
+    </div>
+    <h1 id="inner" > RESULT </h1>
+    <pre> 
+         </pre>
+         {% if fillename %}
+	<div>
+		<img src="{{ url_for('static', filename=fillename) }}">
+	</div>
+{% endif %}
+    <h2 id="inner" style="color:red">MODEL PREDICTS POSITIVE </h2>
+    <pre> 
+      
+    </pre>
+    <h2 id="inner" >Please consult a qualified expert</h2>
+    <form action="{{ url_for('home')}}" method="get" enctype="multipart/form-data">
+        <button  id="inner" class="btn btn-primary" type="submit" >Go Back</button>
+    </form>
+</body>

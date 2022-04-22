@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Super Resolution</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> 
+ 
+</head>
+
+<body>
+ <div class="login">
+	<h1>AI Image Enlarger</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}" method="post" enctype="multipart/form-data">
+    	<input type="file" name="file" id="imageUpload" accept=".png, .jpg, .jpeg" onchange="previewImage(event)" required="required" />
+      <input type="text" name="scale" placeholder="scale" required="required" />
+		  <input type="text" name="image_type" placeholder="image_type" required="required" />
+      
+      <button type="submit" class="btn btn-primary btn-block btn-large">Convert</button>
+    </form>
+
+    <div>
+      <img style="display:none" id="your-image"/>
+    </div>
+
+    <script>
+      var previewImage = function(event) {
+        var preview = document.getElementById('your-image');
+        preview.src = URL.createObjectURL(event.target.files[0]);
+        preview.style.display = "block";
+      };
+    </script>
+
+    <br>
+    <br>
+    <br>
+    <img src="{{ HR_output }}" alt="output image">
+    
+
+ </div>
+
+</body>
+</html>

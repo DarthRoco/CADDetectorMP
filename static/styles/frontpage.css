@@ -1,0 +1,23 @@
+/* html, body {
+    height: 100%;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+body {
+    display: table-cell;
+    vertical-align: middle;
+} */
+
+/* body {
+    display:flex; flex-direction:column; justify-content:center;
+    align-items: center;
+    min-height:100vh;
+  }  */
+  #inner {
+    display: table;
+    margin: 0 auto;
+  }
