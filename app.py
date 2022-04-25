@@ -41,12 +41,14 @@ def predict():
         rr[rr>180]=255
         rr[rr<180]=0
         img=rr
+        img=cv2.resize(img,(64,64))
         img = cv2.cvtColor(img,cv2.COLOR_GRAY2RGB)
+       
         # img=cv2.cvt
         filename=file_path+"OUT.jpg"
         cv2.imwrite(filename,img)
         img=img/255
-        img=np.reshape(img,(1,512,512,3))
+        img=np.reshape(img,(1,64,64,3))
         # cv2.imshow("Hell",imggg)
         # cv2.waitKey(0)
 
@@ -63,10 +65,7 @@ def predict():
         #     yml_file_path = os.path.join(basepath, 'options/df2k/test_df2k.yml')
         # else:
         #     yml_file_path = os.path.join(basepath, 'options/dped/test_dped.yml')       
-        weightFile=os.getcwd()+"\Temp.h5"
-        output_path = os.path.join(basepath, 'static', secure_filename(f1.filename))
-        print("\n\n\n\n\n\n\n\n\n",os.listdir(),"\n\n\n\n\n\n")
-        model=tfm.load_model('./Tpor.h5',compile=False)
+        model=tfm.load_model('./CADModel.h5',compile=False)
         k=float(model.predict(img)[0])
 
         print("\n\n\n\n\n\n\n",k,"\n\n\n\n\n\n")
